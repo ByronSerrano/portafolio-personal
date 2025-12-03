@@ -1,24 +1,80 @@
+---
+import { ClientRouter } from "astro:transitions";
+
+import Header from "@/components/Header.astro";
+import "@/styles/global.css";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Portafolio - Byron Serrano</title>
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title} - Byron Serrano</title>
+    <ClientRouter />
   </head>
   <body>
-    <slot />
+    <Header />
+    <div>
+      <slot />
+    </div>
   </body>
 </html>
 
 <style is:global>
-  html,
+  :root {
+    --font-sans:
+      "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+      Roboto, Ubuntu, Cantarell, "Noto Sans", Arial, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-mono:
+      "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
+    color-scheme: light dark;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
     margin: 0;
     width: 100%;
     height: 100%;
     background-color: #06121e;
-    color-scheme: dark light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: 0.02em; /* sutil toque retro */
+  }
+
+  code,
+  pre,
+  kbd,
+  samp {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
   }
 </style>
