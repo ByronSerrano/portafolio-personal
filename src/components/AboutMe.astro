@@ -1,0 +1,49 @@
+---
+import Image from "astro/components/Image.astro";
+import CustomNav from "@components/CustomNav.astro";
+import imageSrc from "/public/yo_efecto_matrix_nc.png";
+
+const navLinks = [
+  {
+    href: "https://linkedin.com/in/byron-serrano-568043318",
+    label: "LinkedIn",
+    icon: "linkedin",
+  },
+  {
+    href: "https://github.com/ByronSerrano",
+    label: "GitHub",
+    icon: "github",
+  },
+];
+---
+
+<article
+  class="flex items-center justify-between w-full md:max-w-4xl mx-auto h-[90dvh] px-4 py-8"
+>
+  <section>
+    <Image
+      class="rounded-2xl mb-4 mx-auto"
+      src={imageSrc}
+      alt="Ing. Byron Serrano"
+      width={120}
+    />
+
+    <div class="flex flex-col gap-1 md-4 md:mb-6">
+      <h2 class="font-bold text-2xl">Byron Serrano</h2>
+      <p class="">Software Ingenieer</p>
+    </div>
+
+    <nav class="flex flex-col items-start">
+      {
+        navLinks.map(({ href, label, icon }) => (
+          <CustomNav href={href} label={label} icon={icon} />
+        ))
+      }
+    </nav>
+  </section>
+
+  <section class="flex flex-start">
+    <h1 class="text-white text-3xl">Sobre Mi</h1>
+    <p></p>
+  </section>
+</article>

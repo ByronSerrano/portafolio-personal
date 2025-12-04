@@ -1,0 +1,17 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { href, label, icon } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="transition-opacity opacity-60 hover:opacity-100"
+>
+  <section class="flex gap-2">
+    <Icon name={icon} size="1em" class="m-auto" />
+    <span>{label}</span>
+  </section>
+</a>
